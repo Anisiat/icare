@@ -1,0 +1,172 @@
+paths:
+  administrations: ../data/raw/administrations.csv
+  abx_administrations: ../data/raw/abx_administrations.csv
+  demographics: ../data/raw/demographics.csv
+  ethnicity_lookup: ../data/lookups/ethnicity_lookup.csv
+  pathology: ../data/raw/pathology.csv
+  problems: ../data/raw/problems.csv
+  surgery_microbiology: ../data/raw/surgery_patients_microbiology.csv
+  vitals: ../data/raw/vitals.csv
+  vitals_lookup: ../data/lookups/vitals_lookup.csv
+  _3gcr: ../data/lookups/3GCR.csv
+  _3gcs: ../data/lookups/3GCS.csv
+  problem_mapping : '../configs/problems_mapping.yaml'
+  clean_problems: ../data/interim/problems_clean.csv
+  clean_mcs: ../data/interim/mcs_clean.csv
+  screens: ../data/interim/screens_clean.csv
+  tfc_mapping : ../data/lookups/treatment_function_mapping.csv
+  msc_mapping : ../data/lookups/main_specialty_mapping.csv 
+  clean_demographics : ../data/interim/demographics_clean.csv
+  prescriptions : ../data/raw/prescriptions.csv
+  crp : ../data/raw/crp.csv
+  temperature: ../data/raw/temperature.csv
+  emergency_exposure: ../data/raw/prior_emergency_exposure.csv
+  healthcare_exposure: ../data/raw/prior_healthcare_exposure.csv
+  
+ 
+
+# What are the ID columns (used for joining)?
+# What are the time columns (used for filtering or windowing)?
+# Which columns are numeric/categorical features for modelling?
+columns:
+  # columns common across datasets
+  demographics: [subject, ethnicity_desc, gender, death_date]
+  problems: ['subject', 'problem_desc', 'problem_dt']
+
+  index:
+    - subject
+    - admission_date
+    - infection_id
+
+  outcome:
+    - esbl_status
+
+table1:
+  stratify:
+  - tfc
+  - site
+  
+  groupby: esbl_status
+
+  columns:
+    - esbl_status
+    - age_at_admission
+    - gender
+    - ethnicity_desc
+    - imd_decile
+    - site
+    - organism_bug
+    - length_of_stay_days
+    - in_hosp_mortality
+    - days_from_admission_to_first_culture
+    - surgery_length
+    - min_days_from_surgery_to_infection
+    - past_abx
+    - prophylaxis_group
+    - any_healthcare_exposure_90d
+    - hospital_exposure_90d
+    - emergency_exposure_90d
+    - colonisation
+    - cancer
+    - copd
+    - type2_diabetes
+    - ischaemic_heart_disease
+    - hypertension
+    - asthma
+    - temp
+    - crp
+    - tfc
+
+  categorical:
+    - tfc
+    - gender
+    - ethnicity_desc
+    - site
+    - organism_bug
+    - past_abx
+    - prophylaxis_group
+    - any_healthcare_exposure_90d
+    - colonisation
+    - cancer
+    - copd
+    - type2_diabetes
+    - ischaemic_heart_disease
+    - hypertension
+    - asthma
+    - hospital_exposure_90d
+    - emergency_exposure_90d
+    - in_hosp_mortality
+
+  nonnormal:
+    - age_at_admission
+    - imd_decile
+    - length_of_stay_days
+    - days_from_admission_to_first_culture
+    - n_surgeries
+    - surgery_length
+    - min_days_from_surgery_to_infection
+    - temp
+    - crp
+
+
+univariable_lr:
+
+  outcome: esbl_status
+
+  candidate_columns:
+    - esbl_status
+    - age_at_admission
+    - gender
+    - ethnicity_desc
+    - imd_decile
+    - organism_bug
+    - site
+    - days_from_admission_to_first_culture
+    - tfc
+    - surgery_length
+    - min_days_from_surgery_to_infection
+    - past_abx
+    - prophylaxis_group
+    - emergency_exposure_90d
+    - hospital_exposure_90d
+    - any_healthcare_exposure_90d
+    - colonisation
+    - asthma
+    - cancer
+    - copd
+    - hypertension
+    - ischaemic_heart_disease
+    - type2_diabetes
+    - temp
+    - crp
+
+  categorical:
+    - ethnicity_desc
+    - organism_bug
+    - site
+    - tfc
+    - prophylaxis_group
+
+  continuous:
+    - gender
+    - past_abx
+    - age_at_admission
+    - imd_decile
+    - days_from_admission_to_first_culture
+    - surgery_length
+    - min_days_from_surgery_to_infection
+    - temp
+    - crp
+    - emergency_exposure_90d
+    - hospital_exposure_90d
+    - any_healthcare_exposure_90d
+    - colonisation
+    - asthma
+    - cancer
+    - copd
+    - hypertension
+    - ischaemic_heart_disease
+    - type2_diabetes
+ 
+
+

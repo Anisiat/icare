@@ -1,3 +1,56 @@
+
+-- =============================================================================
+-- QA CHECKS / DATASET CHARACTERISATION
+-- =============================================================================
+
+-- Distinct lab tests, subjects and total linked rows.
+-- 19667 lab_ids, 8579 subjects, 42829 rows.
+SELECT
+    COUNT(DISTINCT LAB_TEST_ID) AS lab_ids,
+    COUNT(DISTINCT SUBJECT) AS subjects,
+    COUNT(*) AS total
+FROM AT_ELECTIVE_SURGERY_MICRO_EKP; -- 19667, 8579, 42829
+
+
+
+-- Identify duplicate microbiology rows within a surgery event
+SELECT
+    SUBJECT,
+    SPELL_IDENTIFIER,
+    SURGERY_START_DT,
+    SURGERY_STOP_DT,
+    LAB_TEST_ID,
+    COUNT(*) AS n_rows
+FROM AT_ELECTIVE_SURGERY_MICRO_EKP
+GROUP BY
+    SUBJECT,
+    SPELL_IDENTIFIER,
+    SURGERY_START_DT,
+    SURGERY_STOP_DT,
+    LAB_TEST_ID
+HAVING COUNT(*) > 1
+ORDER BY n_rows DESC;
+
+
+-- =============================================================================
+-- REQUESTED COUNTS: Percentage of surgery patients in each hospital (using SURGICAL_AREA)
+-- =============================================================================
+
+SELECT
+    SURGICAL_AREA AS hospital,
+    COUNT(DISTINCT SUBJECT) AS n_surgery_patients,
+    ROUND(
+        100.0 * COUNT(DISTINCT SUBJECT)
+        / SUM(COUNT(DISTINCT SUBJECT)) OVER (),
+        2
+    ) AS pct_surgery_patients
+FROM AT_ELECTIVE_SURGERY_MICRO_EKP
+GROUP BY SURGICAL_AREA
+ORDER BY pct_surgery_patients DESC, hospital;
+
+
+
+
 -- =============================================================================
 -- REQUESTED COUNTS: TOTAL ELECTIVE SURGERY PATIENTS, ANY INFECTION, ESBL
 -- =============================================================================

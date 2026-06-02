@@ -16,20 +16,6 @@
 -- ============================================================================
 
 
--- Quick QA counts
-SELECT
-    COUNT(DISTINCT LAB_TEST_ID) AS lab_ids,
-    COUNT(DISTINCT SUBJECT) AS subjects,
-    COUNT(*) AS total
-FROM at_microbiology_ekp;
-
-
--- Inspect sample records
-SELECT *
-FROM at_microbiology_ekp
-LIMIT 400;
-
-
 CREATE OR REPLACE TABLE AT_MICROBIOLOGY_EKP AS (
 
 WITH microbiology_ekp_cte AS (

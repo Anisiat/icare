@@ -1,0 +1,42 @@
+tfc_mapping:
+
+  # Hepatobiliary / colorectal
+  "hepatobiliary & pancreatic surgery": "abdominal_gi"
+  "colorectal surgery": "abdominal_gi"
+
+  # General
+  "general surgery": "general_surgery"
+
+  # Urology / nephrology
+  "urology": "uro_nephro"
+  "nephrology": "uro_nephro"
+
+  # Gynae / obs
+  "gynaecology": "obs_gynae"
+  "gynaecological oncology": "gynaecological_oncology"
+  "obstetrics": "obs_gynae"
+
+  # Cardiothoracic
+  "cardiac surgery": "cardiothoracic"
+  "thoracic surgery": "cardiothoracic"
+  "cardiothoracic surgery": "cardiothoracic"
+  "cardiology": "cardiothoracic"
+
+  # Ortho / plastics
+  "trauma & orthopaedics": "ortho_plastics"
+  "plastic surgery": "ortho_plastics"
+
+  # Neuro / ENT
+  "neurosurgery": "neuro_ent"
+  "ent": "neuro_ent"
+
+  # Vascular
+  "vascular surgery": "vascular"
+
+  
+  "medical oncology": "other"
+  "respiratory medicine": "other"
+  "ophthalmology": "other"
+  "hepatology": "other"
+  "transplantation surgery": "other"
+  "paediatric intensive care": "other"

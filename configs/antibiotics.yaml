@@ -1,0 +1,117 @@
+# Group prophylaxis course based on expected gram-negative selection pressure
+
+
+THERAPEUTIC_AGENTS:
+  - "piperacillin-tazobactam"
+  - "ciprofloxacin"
+  - "meropenem"
+  - "amikacin"
+  - "ceftriaxone"
+  - "colistin"
+  - "linezolid"
+  - "avibactam-ceftazidime"
+  - "ceftazidime"
+  - "fosfomycin"
+  - "cefiderocol"
+  - "amoxicillin (contains penicillin)"
+
+NON_ANTIBIOTIC_SUFFIXES:
+  - "vir"
+  - "zole"
+  - "ine"
+  - "nan"
+  - "infusion"
+  - "fungin"
+  - "liposomal"
+
+ABX_TO_EXCLUDE:
+  - "nystatin"
+  - "foscarnet"
+  - "enfuvirtide"
+  - "glucose"
+  - "efavirenz"
+  - "tenofovir disoproxil"
+  - "isoniazid"
+  - "fluconazole"
+  - "posaconazole"
+  - "voriconazole"
+  - "dapsone"
+
+ABX_TO_KEEP:
+  - "doxycycline"
+  - "lymecycline"
+  - "minocycline"
+  - "oxytetracycline"
+  - "tigecycline"
+  - "sulfadiazine"
+  - "metronidazole"
+
+prophylaxis_class_mapping :
+
+  # 1) Carbapenem-containing
+  "meropenem": "carbapenem"
+  "meropenem|vancomycin": "carbapenem"
+  "amikacin|meropenem": "carbapenem"
+  "clarithromycin|meropenem": "carbapenem"
+  "amikacin|clindamycin|meropenem": "carbapenem"
+
+  # 2) Broad-spectrum beta-lactam
+  "piperacillin-tazobactam": "broad_spec_blactam"
+  "piperacillin-tazobactam|vancomycin": "broad_spec_blactam"
+  "erythromycin lactobionate|piperacillin-tazobactam": "broad_spec_blactam"
+  "ceftazidime": "broad_spec_blactam"
+  "aztreonam": "broad_spec_blactam"
+
+  # 3) Fluoroquinolone-containing
+  "ciprofloxacin": "fluoroquinolone"
+  "ciprofloxacin|vancomycin": "fluoroquinolone"
+  "ciprofloxacin|metronidazole": "fluoroquinolone"
+  "ciprofloxacin|teicoplanin": "fluoroquinolone"
+  "amikacin|ciprofloxacin": "fluoroquinolone"
+  "ciprofloxacin|erythromycin lactobionate": "fluoroquinolone"
+
+  # 4) 3rd-generation cephalosporin-containing
+  "ceftriaxone": "third_gen_ceph"
+  "ceftriaxone|metronidazole": "third_gen_ceph"
+  "ceftriaxone|vancomycin": "third_gen_ceph"
+  "ceftriaxone|gentamicin|metronidazole": "third_gen_ceph"
+
+  # 5) 2nd-generation cephalosporin-containing
+  "cefuroxime": "second_gen_ceph"
+  "cefuroxime|metronidazole": "second_gen_ceph"
+  "cefuroxime|vancomycin": "second_gen_ceph"
+  "cefuroxime|gentamicin": "second_gen_ceph"
+  "cefuroxime|gentamicin|metronidazole": "second_gen_ceph"
+  "cefuroxime|metronidazole|vancomycin": "second_gen_ceph"
+  "cefuroxime|clindamycin": "second_gen_ceph"
+  "cefuroxime|gentamicin|vancomycin": "second_gen_ceph"
+
+  # 6) Co-amoxiclav / aminopenicillin-related
+  "co-amoxiclav (contains penicillin)": "co_amoxiclav_pen"
+  "co-amoxiclav (contains penicillin)|gentamicin": "co_amoxiclav_pen"
+  "co-amoxiclav (contains penicillin)|metronidazole": "co_amoxiclav_pen"
+  "co-amoxiclav (contains penicillin)|vancomycin": "co_amoxiclav_pen"
+  "co-amoxiclav (contains penicillin)|gentamicin|metronidazole": "co_amoxiclav_pen"
+  "amoxicillin (contains penicillin)|metronidazole": "co_amoxiclav_pen"
+  "temocillin (contains penicillin)": "co_amoxiclav_pen"
+
+  # 7) Aminoglycoside without broader GN beta-lactam
+  "gentamicin": "aminoglycoside"
+  "gentamicin|vancomycin": "aminoglycoside"
+  "gentamicin|teicoplanin": "aminoglycoside"
+  "gentamicin|metronidazole": "aminoglycoside"
+  "clindamycin|gentamicin": "aminoglycoside"
+  "clindamycin|gentamicin|metronidazole": "aminoglycoside"
+  "amikacin": "aminoglycoside"
+  "amikacin|vancomycin": "aminoglycoside"
+  "amikacin|linezolid": "aminoglycoside"
+  "flucloxacillin (contains penicillin)|gentamicin": "aminoglycoside"
+
+  # 8) Low direct gram-negative pressure
+  "vancomycin": "low_gn_pressure"
+  "teicoplanin": "low_gn_pressure"
+  "linezolid": "low_gn_pressure"
+  "metronidazole": "low_gn_pressure"
+  "clindamycin": "low_gn_pressure"
+  "clindamycin|metronidazole": "low_gn_pressure"
+  "flucloxacillin (contains penicillin)": "low_gn_pressure"

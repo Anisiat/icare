@@ -143,6 +143,8 @@ FROM deduplicated
 
 -- =============================================================================
 -- STEP 2: MERGE SURGERY COHORT WITH MICROBIOLOGY DATASET
+-- keeps microbiology samples linked to surgery patients during the whole 10y window
+-- 48h post admission +  surgical spell filter applied later in python)
 -- =============================================================================
 
 CREATE OR REPLACE TABLE AT_ELECTIVE_SURGERY_MICRO_EKP AS (
@@ -157,25 +159,31 @@ SELECT
     s.SURGERY_STOP_DT,
     s.SURGICAL_AREA,
     s.THEATRE_NBR,
+
     s.ADMISSION_DATE,
     s.ADMISSION_METHOD,
     s.ADMISSION_METHOD_DESC,
     s.ADMISSION_SOURCE,
     s.ADMISSION_SOURCE_DESC,
     s.ADMISSION_TIME,
+
     s.AGE_AT_ADMISSION,
+
     s.DISCHARGE_DATE,
     s.DISCHARGE_DESTINATION,
     s.DISCHARGE_DESTINATION_DESC,
     s.DISCHARGE_METHOD,
     s.DISCHARGE_METHOD_DESC,
     s.DISCHARGE_TIME,
+
     s.EPISODE_END_DATE,
     s.EPISODE_END_TIME,
     s.EPISODE_IDENTIFIER,
     s.EPISODE_START_DATE,
     s.EPISODE_START_TIME,
+
     s.INDEX_OF_MULTIPLE_DEPRIVATION_DECILE,
+
     s.MAIN_SPECIALTY_CODE,
     s.MAIN_SPECIALTY_CODE_DESC,
     s.ORDER_NO_OF_EPISODE,
@@ -190,106 +198,5 @@ INNER JOIN AT_MICROBIOLOGY_EKP m
     ON s.SUBJECT = m.SUBJECT
 
 );
-
-
-
--- =============================================================================
--- QA CHECKS / DATASET CHARACTERISATION
--- =============================================================================
-
--- Distinct lab tests, subjects and total linked rows.
--- Screenshot comment indicates expected values:
--- 19667 lab_ids, 8579 subjects, 42829 rows.
-SELECT
-    COUNT(DISTINCT LAB_TEST_ID) AS lab_ids,
-    COUNT(DISTINCT SUBJECT) AS subjects,
-    COUNT(*) AS total
-FROM AT_ELECTIVE_SURGERY_MICRO_EKP; -- 19667, 8579, 42829
-
-
-
--- Overall dataset summary
-SELECT
-    COUNT(*) AS total_rows,
-    COUNT(DISTINCT SUBJECT) AS n_patients,
-    COUNT(DISTINCT SPELL_IDENTIFIER) AS n_spells,
-    COUNT(DISTINCT LAB_TEST_ID) AS n_lab_tests,
-    COUNT(
-        DISTINCT SUBJECT || '|' ||
-        SPELL_IDENTIFIER || '|' ||
-        SURGERY_START_DT || '|' ||
-        SURGERY_STOP_DT
-    ) AS n_surgeries
-FROM AT_ELECTIVE_SURGERY_MICRO_EKP;
-
-
--- Identify duplicate microbiology rows within a surgery event
-SELECT
-    SUBJECT,
-    SPELL_IDENTIFIER,
-    SURGERY_START_DT,
-    SURGERY_STOP_DT,
-    LAB_TEST_ID,
-    COUNT(*) AS n_rows
-FROM AT_ELECTIVE_SURGERY_MICRO_EKP
-GROUP BY
-    SUBJECT,
-    SPELL_IDENTIFIER,
-    SURGERY_START_DT,
-    SURGERY_STOP_DT,
-    LAB_TEST_ID
-HAVING COUNT(*) > 1
-ORDER BY n_rows DESC;
-
-
--- Count frequencies of lab_test_id values
--- (comment says "count values for surgery types", but the code groups lab_test_id)
-SELECT
-    LOWER(lab_test_id) AS lab_test_id,
-    COUNT(*) AS n
-FROM AT_ELECTIVE_SURGERY_MICRO_EKP
-GROUP BY LOWER(lab_test_id)
-ORDER BY n DESC;
-
-
--- Percentage of surgery patients in each hospital (using SURGICAL_AREA)
-SELECT
-    SURGICAL_AREA AS hospital,
-    COUNT(DISTINCT SUBJECT) AS n_surgery_patients,
-    ROUND(
-        100.0 * COUNT(DISTINCT SUBJECT)
-        / SUM(COUNT(DISTINCT SUBJECT)) OVER (),
-        2
-    ) AS pct_surgery_patients
-FROM AT_ELECTIVE_SURGERY_MICRO_EKP
-GROUP BY SURGICAL_AREA
-ORDER BY pct_surgery_patients DESC, hospital;
-
-
--- =============================================================================
--- REQUESTED COUNTS: TOTAL ELECTIVE SURGERY PATIENTS, ANY INFECTION, ESBL
--- =============================================================================
--- Assumption: AT_MICROBIOLOGY_EKP (and therefore AT_ELECTIVE_SURGERY_MICRO_EKP)
--- contains positive microbiology cultures.
-SELECT
-    (SELECT COUNT(DISTINCT SUBJECT, SURGERY_START_DT, SURGERY_STOP_DT)
-     FROM AT_ELECTIVE_SURGERY_COHORT) AS total_elective_surgeries, 
-
-    (SELECT COUNT(DISTINCT SUBJECT)
-     FROM AT_ELECTIVE_SURGERY_COHORT) as total_elective_surgery_patients,
-
-    (SELECT COUNT(DISTINCT SUBJECT)
-     FROM AT_ELECTIVE_SURGERY_MICRO_EKP) AS elective_surgery_patients_with_positive_ekp
-     
-     
-    -- get average LOS for patients with and without infection (defined as having a linked microbiology record)
-    
-    (Select ROUND(AVG(DATEDIFF(day, ADMISSION_DATE, DISCHARGE_DATE)), 2) AS avg_los_with_infection
-     FROM AT_ELECTIVE_SURGERY_MICRO_EKP),
-     
-     (Select ROUND(AVG(DATEDIFF(day, ADMISSION_DATE, DISCHARGE_DATE)), 2) AS avg_los_without_infection
-     FROM AT_ELECTIVE_SURGERY_COHORT
-     WHERE SUBJECT NOT IN (SELECT DISTINCT SUBJECT FROM AT_ELECTIVE_SURGERY_MICRO_EKP));
-
 
 
