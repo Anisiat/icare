@@ -96,4 +96,6 @@ def get_colonisation(
 
     main_df[new_col_name] = main_df[new_col_name].fillna(0).astype(int)
 
+    print(f"Added colonisation feature based on {len(exposed)} positive screening records.")
+    
     return main_df

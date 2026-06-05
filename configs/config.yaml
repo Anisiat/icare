@@ -42,40 +42,52 @@ columns:
     - esbl_status
 
 table1:
-  stratify:
-  - tfc
-  - site
-  
+
   groupby: esbl_status
 
   columns:
-    - esbl_status
-    - age_at_admission
-    - gender
-    - ethnicity_desc
-    - imd_decile
-    - site
-    - organism_bug
-    - length_of_stay_days
-    - in_hosp_mortality
-    - days_from_admission_to_first_culture
-    - surgery_length
-    - min_days_from_surgery_to_infection
-    - past_abx
-    - prophylaxis_group
-    - any_healthcare_exposure_90d
-    - hospital_exposure_90d
-    - emergency_exposure_90d
-    - colonisation
-    - cancer
-    - copd
-    - type2_diabetes
-    - ischaemic_heart_disease
-    - hypertension
-    - asthma
-    - temp
-    - crp
-    - tfc
+    age_at_admission
+    gender
+    ethnicity_desc
+    imd_decile
+
+    is_emergency
+    tfc
+
+    asthma
+    cancer
+    copd
+    hypertension
+    ischaemic_heart_disease
+    type2_diabetes
+
+    emergency_exposure_90d
+    hospital_exposure_90d
+
+    n_surgeries
+    procedure_descs
+    surgery_length
+    min_days_from_surgery_to_infection
+
+    prophylaxis_group
+    prophylaxis_class
+    delta_hours_prophylaxis
+    n_prophylaxis_events
+    is_therapeutic
+    tier
+
+    site
+    all_sites_grouped
+    n_sites
+    organisms_bug
+    n_samples
+    culture_span_days
+
+    temp
+    crp
+
+    length_of_stay_days
+    in_hosp_mortality
 
   categorical:
     - tfc
@@ -109,64 +121,54 @@ table1:
     - crp
 
 
-univariable_lr:
 
+logistic_regression:
   outcome: esbl_status
 
-  candidate_columns:
-    - esbl_status
-    - age_at_admission
-    - gender
-    - ethnicity_desc
-    - imd_decile
-    - organism_bug
-    - site
-    - days_from_admission_to_first_culture
-    - tfc
-    - surgery_length
-    - min_days_from_surgery_to_infection
-    - past_abx
-    - prophylaxis_group
-    - emergency_exposure_90d
-    - hospital_exposure_90d
-    - any_healthcare_exposure_90d
-    - colonisation
-    - asthma
-    - cancer
-    - copd
-    - hypertension
-    - ischaemic_heart_disease
-    - type2_diabetes
-    - temp
-    - crp
+  cluster_col:
+    - subject
 
-  categorical:
-    - ethnicity_desc
-    - organism_bug
-    - site
-    - tfc
-    - prophylaxis_group
+  id_columns:
+    - subject
+    - infection_id
+    - admission_date
 
-  continuous:
-    - gender
-    - past_abx
-    - age_at_admission
-    - imd_decile
-    - days_from_admission_to_first_culture
-    - surgery_length
-    - min_days_from_surgery_to_infection
-    - temp
-    - crp
-    - emergency_exposure_90d
-    - hospital_exposure_90d
-    - any_healthcare_exposure_90d
-    - colonisation
-    - asthma
-    - cancer
-    - copd
-    - hypertension
-    - ischaemic_heart_disease
-    - type2_diabetes
- 
+  predictors:
+    continuous:
+      - age_at_admission
+      - imd_decile
+      - days_from_admission_to_first_culture
+      - surgery_length
+      - min_days_from_surgery_to_infection
+      - temp
+      - crp
+
+    binary:
+      - gender
+      - past_abx
+      - emergency_exposure_90d
+      - hospital_exposure_90d
+      - any_healthcare_exposure_90d
+      - colonisation
+      - asthma
+      - cancer
+      - copd
+      - hypertension
+      - ischaemic_heart_disease
+      - type2_diabetes
+
+    categorical:
+      - ethnicity_desc
+      - organism_bug
+      - site
+      - tfc
+      - prophylaxis_group
+
+  reference_levels:
+    site: blood
+    organism_bug: escherichia coli
+    ethnicity_desc: white
+    tfc: general_surgery
+    prophylaxis_group: cefuroxime + metronidazole
 
 
