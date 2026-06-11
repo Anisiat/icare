@@ -77,15 +77,16 @@ def infer_prophylaxis(
     df: pd.DataFrame,
     therapeutic_agents: List[str],
     surgery_start_col: str = "surgery_start_dt",
+    surgery_stop_col: str = "surgery_stop_dt",
     administration_dt_col: str = "administration_dt",
     idx_col: str = "infection_id",
     abx_col: str = "medication_name_short",
     route_col: str = "route",
     admit_date_col: str = "admission_date",
     discharge_date_col: str = "discharge_date",
-    hours_before_surgery: int = 12,
+    hours_before_surgery: int = 2,
     hours_after_surgery: int = 1,
-    broad_time_window: float = 12.0,
+    broad_time_window: float = 6.0,
 ) -> pd.DataFrame:
     """
     Infer prophylaxis per infection_id.
@@ -108,6 +109,7 @@ def infer_prophylaxis(
 
     required = [
         surgery_start_col,
+        surgery_stop_col,
         administration_dt_col,
         idx_col,
         abx_col,
@@ -122,7 +124,7 @@ def infer_prophylaxis(
     out_df = df.copy()
 
     # datetime handling
-    for col in [surgery_start_col, administration_dt_col, admit_date_col, discharge_date_col]:
+    for col in [surgery_start_col, surgery_stop_col, administration_dt_col, admit_date_col, discharge_date_col]:
         out_df[col] = pd.to_datetime(out_df[col], errors="coerce")
 
     # normalise strings
@@ -132,10 +134,11 @@ def infer_prophylaxis(
     # IV only
     out_df = out_df[out_df[route_col] == "iv"].copy()
 
-    # delta in hours: positive means before surgery
+    # delta in hours: positive means before start of surgery
     out_df["delta_hours_prophylaxis"] = (
         out_df[surgery_start_col] - out_df[administration_dt_col]
     ).dt.total_seconds() / 3600.0
+
     out_df["abs_delta"] = out_df["delta_hours_prophylaxis"].abs()
 
     # therapeutic flag
@@ -144,8 +147,8 @@ def infer_prophylaxis(
 
     # pass 1 mask: IV administration within peri-op window
     pass1_mask = (
-        (out_df["delta_hours_prophylaxis"] >= -hours_after_surgery)
-        & (out_df["delta_hours_prophylaxis"] <= hours_before_surgery)
+        (out_df[administration_dt_col] >= out_df[surgery_start_col] - pd.to_timedelta(hours_before_surgery, unit="h"))
+        & (out_df[administration_dt_col] <= out_df[surgery_start_col] + pd.to_timedelta(hours_after_surgery, unit="h"))
     )
 
     # pass 2 mask: broader window during admission
@@ -156,11 +159,13 @@ def infer_prophylaxis(
     )
 
     # assign tiers to the administration df - tier 1 if in peri-op window/ tier 2 if in broad window
-    out_df["tier"] = np.where(pass1_mask, 1, np.where(pass2_mask, 2, 'no_prophylaxis'))
-
+    out_df["tier"] = np.select(
+    [pass1_mask, pass2_mask],
+    [1, 2],
+    default=np.nan,
+)
     # drop rows where administration is in neither time windows
-    # keeps 
-    candidates = out_df.dropna(subset=["tier"]).copy()
+    candidates = out_df[out_df["tier"].notna()].copy()
 
     all_ids = df[[idx_col]].drop_duplicates()
 
@@ -230,6 +235,7 @@ def infer_prophylaxis(
 
     result = all_ids.merge(first_candidate_row, on=idx_col, how="left")
     result = result.merge(prophylaxis_summary, on=idx_col, how="left")
+    result["prophylaxis"] = result["prophylaxis"].fillna("no_prophylaxis")
 
     return result
 
@@ -254,7 +260,6 @@ def run(cfg_path, out_csv_name, save=True, return_df=False, verbose=False):
     paths = cfg.get('paths', {})
     config_cols = cfg.get('columns', {})
 
-    administrations_df = pd.read_csv(PROJECT_ROOT / paths['administrations'])
     mcs_df = pd.read_csv(PROJECT_ROOT / paths['clean_mcs'])
 
     mcs_df = get_abx_exposure(
@@ -271,174 +276,49 @@ def run(cfg_path, out_csv_name, save=True, return_df=False, verbose=False):
         return mcs_df
         
 
-def regroup_sparse_prophylaxis_categories(
-    df,
-    prophylaxis_col="prophylaxis",
-    outcome_col="esbl_status",
-    output_col="prophylaxis_group",
-    min_total=20,
-    min_class_count=10,
-    keep_categories=None
-):
-    """
-    Collapse sparse prophylaxis categories into broader antibiotic groups
-    for more stable modelling.
 
-    Parameters
-    ----------
-    df : pd.DataFrame
-        Analysis dataframe.
+def group_prophylaxis(value: object) -> object:
+    """Collapse raw prophylaxis strings into broader analysis groups."""
+    if pd.isna(value):
+        return pd.NA
 
-    prophylaxis_col : str
-        Column containing prophylaxis regimens.
+    value = str(value).lower().strip()
 
-    outcome_col : str
-        Binary outcome column (e.g. ESBL vs non-ESBL).
+    aminoglycosides = {"gentamicin", "amikacin", "tobramycin", "streptomycin"}
+    broad_spectrum_beta_lactams = {"piperacillin-tazobactam", "tazocin", "tazobactam", "piperacillin"}
+    carbapenems = {"ertapenem", "meropenem", "imipenem", "doripenem"}
 
-    output_col : str
-        Name of grouped prophylaxis column.
+    limited_enterobact_agents = {
+    "vancomycin", "teicoplanin", "daptomycin", "linezolid",
+    "clindamycin", "metronidazole",
+    "flucloxacillin (contains penicillin)", "amoxicillin (contains penicillin)", "temocillin (contains penicillin)",
+    }
 
-    min_total : int
-        Minimum total observations required to keep a category.
+    if "co-amoxiclav" in value:
+        return "co-amoxiclav-based"
 
-    min_class_count : int
-        Minimum observations required in EACH outcome class.
+    if "cefuroxime" in value and any(a in value for a in aminoglycosides):
+        return "cefuroxime +/- metronidazole + aminoglycoside"
 
-    keep_categories : list or None
-        Categories to never collapse into "other".
+    if "cefuroxime" in value:
+        return "cefuroxime +/- metronidazole"
 
-    Returns
-    -------
-    pd.DataFrame
-        DataFrame with grouped prophylaxis column added.
-    """
+    if any(a in value for a in aminoglycosides):
+        return "aminoglycoside-based"
 
-    df = df.copy()
+    if any(b in value for b in broad_spectrum_beta_lactams):
+        return "broad-spectrum beta-lactam"
 
-    if keep_categories is None:
-        keep_categories = ["no_prophylaxis"]
+    if any(c in value for c in carbapenems):
+        return "carbapenem-based"
+    
+    if any(x in value for x in {"ceftriaxone", "ciprofloxacin", "levofloxacin", "aztreonam", "colistin", "tigecycline"}):
+        return "other_gram_negative_active"
 
-    # ---------------------------------------------------------
-    # Helper function to regroup rare antibiotic regimens
-    # ---------------------------------------------------------
+    if all(agent.strip() in limited_enterobact_agents for agent in value.split(" | ")):
+        return "limited_enterobact_coverage"
 
-    def group_abx(x):
-
-        x = str(x).lower()
-
-        if "co-amoxiclav" in x:
-            return "co-amoxiclav"
-
-        elif "cefuroxime" in x:
-            return "cefuroxime"
-
-        elif "ceftriaxone" in x:
-            return "third_gen_ceph"
-
-        elif "meropenem" in x:
-            return "carbapenem"
-
-        elif "ciprofloxacin" in x:
-            return "fluoroquinolone"
-
-        elif "vancomycin" in x or "teicoplanin" in x:
-            return "glycopeptide_based"
-
-        elif "clindamycin" in x:
-            return "clindamycin"
-
-        else:
-            return "other"
-
-    # ---------------------------------------------------------
-    # FIRST PASS:
-    # Find sparse ORIGINAL prophylaxis categories
-    # ---------------------------------------------------------
-
-    ct = pd.crosstab(
-        df[prophylaxis_col],
-        df[outcome_col]
-    )
-
-    ct = ct.reindex(
-        columns=["non-ESBL", "ESBL"],
-        fill_value=0
-    )
-
-    ct["total"] = ct["non-ESBL"] + ct["ESBL"]
-
-    sparse_categories = ct[
-        (ct["total"] < min_total) |
-        (ct["non-ESBL"] < min_class_count) |
-        (ct["ESBL"] < min_class_count)
-    ].index
-
-    # initialise grouped column
-    df[output_col] = df[prophylaxis_col]
-
-    # regroup sparse categories
-    sparse_mask = df[prophylaxis_col].isin(sparse_categories)
-
-    df.loc[sparse_mask, output_col] = (
-        df.loc[sparse_mask, prophylaxis_col]
-        .apply(group_abx)
-    )
-
-    # ---------------------------------------------------------
-    # SECOND PASS:
-    # Collapse still-sparse grouped categories into "other"
-    # ---------------------------------------------------------
-
-    ct_grouped = pd.crosstab(
-        df[output_col],
-        df[outcome_col]
-    )
-
-    ct_grouped = ct_grouped.reindex(
-        columns=["non-ESBL", "ESBL"],
-        fill_value=0
-    )
-
-    ct_grouped["total"] = (
-        ct_grouped["non-ESBL"] +
-        ct_grouped["ESBL"]
-    )
-
-    still_sparse = ct_grouped[
-        (ct_grouped["total"] < min_total) |
-        (ct_grouped["non-ESBL"] < min_class_count) |
-        (ct_grouped["ESBL"] < min_class_count)
-    ].index
-
-    # keep clinically important categories
-    still_sparse = [
-        x for x in still_sparse
-        if x not in keep_categories
-    ]
-
-    df.loc[
-        df[output_col].isin(still_sparse),
-        output_col
-    ] = "other"
-
-
-    prophylaxis_mapping = {
-
-    # Aminoglycoside-based (without cephalosporin)
-    "gentamicin": "aminoglycoside_based",
-    "gentamicin | metronidazole": "aminoglycoside_based",
-    "gentamicin | teicoplanin": "aminoglycoside_based",
-
-    # Glycopeptide
-    "vancomycin": "glycopeptide_based",
-
-    "cefuroxime | gentamicin": "cephalosporin_aminoglycoside",
-    "cefuroxime | gentamicin | metronidazole": "cephalosporin_aminoglycoside",}
-
-    df[output_col] = df[output_col].replace(prophylaxis_mapping)
-
-    return df
-
+    return "other"
 
 
 def get_abx_exposure(
@@ -487,7 +367,8 @@ def get_abx_exposure(
 
     mcs_df = mcs_df.merge(prophylaxis_df, on="infection_id", how="left")
 
-    mcs_df = regroup_sparse_prophylaxis_categories(mcs_df)
+    mcs_df["prophylaxis_group"] = mcs_df["prophylaxis"].apply(group_prophylaxis)
+
 
     mcs_df = map_prophylaxis_class(mcs_df)
     

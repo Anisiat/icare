@@ -46,53 +46,31 @@ def load_analysis_data(path: Path, surgery_only: bool = True) -> pd.DataFrame:
     return analysis_df
 
 
-def group_prophylaxis(value: object) -> object:
+def regroup_prophylaxis(value: object) -> object:
     """Collapse raw prophylaxis strings into broader analysis groups."""
     if pd.isna(value):
         return pd.NA
 
     value = str(value).lower().strip()
 
-    aminoglycosides = {"gentamicin", "amikacin", "tobramycin", "streptomycin"}
-    broad_spectrum_beta_lactams = {"piperacillin-tazobactam", "tazocin", "tazobactam", "piperacillin"}
-    carbapenems = {"ertapenem", "meropenem", "imipenem", "doripenem"}
-    penicillins = {"flucloxacillin", "amoxicillin", "temocillin"}
-
+    if "cefuroxime" in value and "metronidazole" in value:
+        return "cefuroxime + metronidazole"
     if "co-amoxiclav" in value:
         return "co-amoxiclav-based"
-
-    if "cefuroxime" in value and "metronidazole" in value and any(a in value for a in aminoglycosides):
-        return "cefuroxime + metronidazole + aminoglycoside"
-
-    if "cefuroxime" in value:
-        return "cefuroxime +/- metronidazole"
-
-    if any(a in value for a in aminoglycosides):
-        return "aminoglycoside-based"
-
-    if any(b in value for b in broad_spectrum_beta_lactams):
-        return "broad-spectrum beta-lactam"
-
-    if any(c in value for c in carbapenems):
-        return "carbapenem-based"
-
-    if "glycopeptide" in value or "teicoplanin" in value or "vancomycin" in value or "daptomycin" in value or "linezolid" in value:
+    if "glycopeptide" in value or "teicoplanin" in value or "vancomycin" in value:
         return "glycopeptide-based"
-
+    if "aminoglycoside" in value or "gentamicin" in value:
+        return "aminoglycoside-based"
     if "clindamycin" in value:
         return "clindamycin-based"
-    
-    if any(p in value for p in penicillins):
-        return "penicillin-based"
-
     if "metronidazole" in value:
         return "metronidazole-only/+other"
-
+    if "cefuroxime" in value:
+        return "cefuroxime-only/+other"
+    if "piperacillin-tazobactam" in value:
+        return "broad-spectrum beta-lactam"
 
     return "other"
-
-prophylaxis_combinations["prophylaxis_group"] = prophylaxis_combinations["prophylaxis"].apply(group_prophylaxis)
-prophylaxis_combinations[prophylaxis_combinations["prophylaxis_group"] == "other"]
 
 
 def apply_prophylaxis_ethnicity_gender_maps(analysis_df: pd.DataFrame) -> pd.DataFrame:

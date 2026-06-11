@@ -22,7 +22,7 @@ paths:
   temperature: ../data/raw/temperature.csv
   emergency_exposure: ../data/raw/prior_emergency_exposure.csv
   healthcare_exposure: ../data/raw/prior_healthcare_exposure.csv
-  lr_dataset: ../outputs/univariable_lr/lr_data.csv
+  
  
 
 # What are the ID columns (used for joining)?

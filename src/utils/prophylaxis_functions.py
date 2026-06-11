@@ -356,3 +356,174 @@ unique_samples.loc[mask, "prophylaxis"] = unique_samples.loc[
     mask, "resolved_prophylaxis"
 ]
 unique_samples = unique_samples.drop(columns=["resolved_prophylaxis"])
+
+
+
+
+def regroup_sparse_prophylaxis_categories(
+    df,
+    prophylaxis_col="prophylaxis",
+    outcome_col="esbl_status",
+    output_col="prophylaxis_group",
+    min_total=20,
+    min_class_count=10,
+    keep_categories=None
+):
+    """
+    Collapse sparse prophylaxis categories into broader antibiotic groups
+    for more stable modelling.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        Analysis dataframe.
+
+    prophylaxis_col : str
+        Column containing prophylaxis regimens.
+
+    outcome_col : str
+        Binary outcome column (e.g. ESBL vs non-ESBL).
+
+    output_col : str
+        Name of grouped prophylaxis column.
+
+    min_total : int
+        Minimum total observations required to keep a category.
+
+    min_class_count : int
+        Minimum observations required in EACH outcome class.
+
+    keep_categories : list or None
+        Categories to never collapse into "other".
+
+    Returns
+    -------
+    pd.DataFrame
+        DataFrame with grouped prophylaxis column added.
+    """
+
+    df = df.copy()
+
+    if keep_categories is None:
+        keep_categories = ["no_prophylaxis"]
+
+    # ---------------------------------------------------------
+    # Helper function to regroup rare antibiotic regimens
+    # ---------------------------------------------------------
+
+    def group_abx(x):
+
+        x = str(x).lower()
+
+        if "co-amoxiclav" in x:
+            return "co-amoxiclav"
+
+        elif "cefuroxime" in x:
+            return "cefuroxime"
+
+        elif "ceftriaxone" in x:
+            return "third_gen_ceph"
+
+        elif "meropenem" in x:
+            return "carbapenem"
+
+        elif "ciprofloxacin" in x:
+            return "fluoroquinolone"
+
+        elif "vancomycin" in x or "teicoplanin" in x:
+            return "glycopeptide_based"
+
+        elif "clindamycin" in x:
+            return "clindamycin"
+
+        else:
+            return "other"
+
+    # ---------------------------------------------------------
+    # FIRST PASS:
+    # Find sparse ORIGINAL prophylaxis categories
+    # ---------------------------------------------------------
+
+    ct = pd.crosstab(
+        df[prophylaxis_col],
+        df[outcome_col]
+    )
+
+    ct = ct.reindex(
+        columns=["non-ESBL", "ESBL"],
+        fill_value=0
+    )
+
+    ct["total"] = ct["non-ESBL"] + ct["ESBL"]
+
+    sparse_categories = ct[
+        (ct["total"] < min_total) |
+        (ct["non-ESBL"] < min_class_count) |
+        (ct["ESBL"] < min_class_count)
+    ].index
+
+    # initialise grouped column
+    df[output_col] = df[prophylaxis_col]
+
+    # regroup sparse categories
+    sparse_mask = df[prophylaxis_col].isin(sparse_categories)
+
+    df.loc[sparse_mask, output_col] = (
+        df.loc[sparse_mask, prophylaxis_col]
+        .apply(group_abx)
+    )
+
+    # ---------------------------------------------------------
+    # SECOND PASS:
+    # Collapse still-sparse grouped categories into "other"
+    # ---------------------------------------------------------
+
+    ct_grouped = pd.crosstab(
+        df[output_col],
+        df[outcome_col]
+    )
+
+    ct_grouped = ct_grouped.reindex(
+        columns=["non-ESBL", "ESBL"],
+        fill_value=0
+    )
+
+    ct_grouped["total"] = (
+        ct_grouped["non-ESBL"] +
+        ct_grouped["ESBL"]
+    )
+
+    still_sparse = ct_grouped[
+        (ct_grouped["total"] < min_total) |
+        (ct_grouped["non-ESBL"] < min_class_count) |
+        (ct_grouped["ESBL"] < min_class_count)
+    ].index
+
+    # keep clinically important categories
+    still_sparse = [
+        x for x in still_sparse
+        if x not in keep_categories
+    ]
+
+    df.loc[
+        df[output_col].isin(still_sparse),
+        output_col
+    ] = "other"
+
+
+    prophylaxis_mapping = {
+
+    # Aminoglycoside-based (without cephalosporin)
+    "gentamicin": "aminoglycoside_based",
+    "gentamicin | metronidazole": "aminoglycoside_based",
+    "gentamicin | teicoplanin": "aminoglycoside_based",
+
+    # Glycopeptide
+    "vancomycin": "glycopeptide_based",
+
+    "cefuroxime | gentamicin": "cephalosporin_aminoglycoside",
+    "cefuroxime | gentamicin | metronidazole": "cephalosporin_aminoglycoside",}
+
+    df[output_col] = df[output_col].replace(prophylaxis_mapping)
+
+    return df
