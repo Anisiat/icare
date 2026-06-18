@@ -1,0 +1,50 @@
+\begin{tabular}{lllllrrrrrrlr}
+\toprule
+ & predictor & term & category & reference & odds_ratio & ci_lower & ci_upper & p_value & n & events & model_type & error \\
+\midrule
+0 & any_healthcare_exposure_90d & any_healthcare_exposure_90d & NaN & NaN & 1.103686 & 0.938289 & 1.298237 & 0.233655 & 2589 & 893 & binary & NaN \\
+1 & asthma & asthma & NaN & NaN & 1.198551 & 0.989187 & 1.452229 & 0.064462 & 2589 & 893 & binary & NaN \\
+2 & cancer & cancer & NaN & NaN & 0.932504 & 0.767127 & 1.133533 & 0.482931 & 2589 & 893 & binary & NaN \\
+3 & copd & copd & NaN & NaN & 0.698396 & 0.534707 & 0.912195 & 0.008428 & 2589 & 893 & binary & NaN \\
+4 & emergency_exposure_90d & emergency_exposure_90d & NaN & NaN & 0.954817 & 0.756934 & 1.204432 & 0.696394 & 2589 & 893 & binary & NaN \\
+5 & gender & gender & NaN & NaN & 1.092408 & 0.927866 & 1.286129 & 0.288637 & 2589 & 893 & binary & NaN \\
+6 & hospital_exposure_90d & hospital_exposure_90d & NaN & NaN & 1.159798 & 0.985165 & 1.365387 & 0.075000 & 2589 & 893 & binary & NaN \\
+7 & hypertension & hypertension & NaN & NaN & 1.253616 & 1.065791 & 1.474543 & 0.006346 & 2589 & 893 & binary & NaN \\
+8 & ischaemic_heart_disease & ischaemic_heart_disease & NaN & NaN & 1.087344 & 0.909780 & 1.299563 & 0.357289 & 2589 & 893 & binary & NaN \\
+9 & past_abx & past_abx & NaN & NaN & 1.347857 & 1.066537 & 1.703381 & 0.012444 & 2589 & 893 & binary & NaN \\
+10 & type2_diabetes & type2_diabetes & NaN & NaN & 1.379219 & 1.123994 & 1.692398 & 0.002073 & 2589 & 893 & binary & NaN \\
+11 & ethnicity_desc & C(ethnicity_desc, Treatment(reference='white'))[T.asian] & asian & white & 2.702559 & 2.125433 & 3.436395 & 0.000000 & 1794 & 607 & categorical & NaN \\
+12 & ethnicity_desc & C(ethnicity_desc, Treatment(reference='white'))[T.black] & black & white & 1.258824 & 0.931598 & 1.700987 & 0.133965 & 1794 & 607 & categorical & NaN \\
+13 & organism_bug & C(organism_bug, Treatment(reference='escherichia coli'))[T.proteus mirabilis] & proteus mirabilis & escherichia coli & 0.083067 & 0.042220 & 0.163433 & 0.000000 & 2589 & 893 & categorical & NaN \\
+14 & organism_bug & C(organism_bug, Treatment(reference='escherichia coli'))[T.klebsiella oxytoca] & klebsiella oxytoca & escherichia coli & 0.136176 & 0.070928 & 0.261444 & 0.000000 & 2589 & 893 & categorical & NaN \\
+15 & organism_bug & C(organism_bug, Treatment(reference='escherichia coli'))[T.klebsiella pneumoniae] & klebsiella pneumoniae & escherichia coli & 1.163878 & 0.962298 & 1.407684 & 0.117836 & 2589 & 893 & categorical & NaN \\
+16 & prophylaxis_group & C(prophylaxis_group, Treatment(reference='cefuroxime + metronidazole'))[T.co-amoxiclav-based] & co-amoxiclav-based & cefuroxime + metronidazole & 0.432570 & 0.335307 & 0.558045 & 0.000000 & 2286 & 783 & categorical & NaN \\
+17 & prophylaxis_group & C(prophylaxis_group, Treatment(reference='cefuroxime + metronidazole'))[T.clindamycin-based] & clindamycin-based & cefuroxime + metronidazole & 0.252565 & 0.149215 & 0.427496 & 0.000000 & 2286 & 783 & categorical & NaN \\
+18 & prophylaxis_group & C(prophylaxis_group, Treatment(reference='cefuroxime + metronidazole'))[T.glycopeptide-based] & glycopeptide-based & cefuroxime + metronidazole & 0.657851 & 0.505297 & 0.856464 & 0.001865 & 2286 & 783 & categorical & NaN \\
+19 & prophylaxis_group & C(prophylaxis_group, Treatment(reference='cefuroxime + metronidazole'))[T.aminoglycoside-based] & aminoglycoside-based & cefuroxime + metronidazole & 0.637960 & 0.458640 & 0.887390 & 0.007596 & 2286 & 783 & categorical & NaN \\
+20 & prophylaxis_group & C(prophylaxis_group, Treatment(reference='cefuroxime + metronidazole'))[T.broad-spectrum beta-lactam] & broad-spectrum beta-lactam & cefuroxime + metronidazole & 0.383799 & 0.140036 & 1.051886 & 0.062655 & 2286 & 783 & categorical & NaN \\
+21 & prophylaxis_group & C(prophylaxis_group, Treatment(reference='cefuroxime + metronidazole'))[T.metronidazole-only/+other] & metronidazole-only/+other & cefuroxime + metronidazole & 0.710599 & 0.495406 & 1.019266 & 0.063413 & 2286 & 783 & categorical & NaN \\
+22 & prophylaxis_group & C(prophylaxis_group, Treatment(reference='cefuroxime + metronidazole'))[T.cefuroxime-only/+other] & cefuroxime-only/+other & cefuroxime + metronidazole & 0.774532 & 0.574954 & 1.043387 & 0.092843 & 2286 & 783 & categorical & NaN \\
+23 & site & C(site, Treatment(reference='blood'))[T.sputum] & sputum & blood & 0.437514 & 0.284487 & 0.672853 & 0.000167 & 2190 & 762 & categorical & NaN \\
+24 & site & C(site, Treatment(reference='blood'))[T.urine] & urine & blood & 1.394653 & 0.977523 & 1.989782 & 0.066567 & 2190 & 762 & categorical & NaN \\
+25 & site & C(site, Treatment(reference='blood'))[T.wound] & wound & blood & 0.804702 & 0.558835 & 1.158741 & 0.242812 & 2190 & 762 & categorical & NaN \\
+26 & site & C(site, Treatment(reference='blood'))[T.tissue/biopsy] & tissue/biopsy & blood & 0.801587 & 0.426184 & 1.507664 & 0.492607 & 2190 & 762 & categorical & NaN \\
+27 & site & C(site, Treatment(reference='blood'))[T.drain] & drain & blood & 0.930582 & 0.604799 & 1.431853 & 0.743491 & 2190 & 762 & categorical & NaN \\
+28 & site & C(site, Treatment(reference='blood'))[T.tips_devices] & tips_devices & blood & 0.979224 & 0.524636 & 1.827706 & 0.947428 & 2190 & 762 & categorical & NaN \\
+29 & tfc & C(tfc, Treatment(reference='general_surgery'))[T.gynaecological_oncology] & gynaecological_oncology & general_surgery & 2.048526 & 1.396635 & 3.004692 & 0.000243 & 2492 & 862 & categorical & NaN \\
+30 & tfc & C(tfc, Treatment(reference='general_surgery'))[T.obs_gynae] & obs_gynae & general_surgery & 0.513192 & 0.347570 & 0.757734 & 0.000793 & 2492 & 862 & categorical & NaN \\
+31 & tfc & C(tfc, Treatment(reference='general_surgery'))[T.uro_nephro] & uro_nephro & general_surgery & 1.525745 & 1.090022 & 2.135644 & 0.013803 & 2492 & 862 & categorical & NaN \\
+32 & tfc & C(tfc, Treatment(reference='general_surgery'))[T.ortho_plastics] & ortho_plastics & general_surgery & 0.621549 & 0.414486 & 0.932053 & 0.021429 & 2492 & 862 & categorical & NaN \\
+33 & tfc & C(tfc, Treatment(reference='general_surgery'))[T.cardiothoracic] & cardiothoracic & general_surgery & 0.621864 & 0.409822 & 0.943617 & 0.025566 & 2492 & 862 & categorical & NaN \\
+34 & tfc & C(tfc, Treatment(reference='general_surgery'))[T.abdominal_gi] & abdominal_gi & general_surgery & 1.433158 & 1.019508 & 2.014641 & 0.038344 & 2492 & 862 & categorical & NaN \\
+35 & tfc & C(tfc, Treatment(reference='general_surgery'))[T.neuro_ent] & neuro_ent & general_surgery & 0.746976 & 0.503685 & 1.107783 & 0.146815 & 2492 & 862 & categorical & NaN \\
+36 & tfc & C(tfc, Treatment(reference='general_surgery'))[T.vascular] & vascular & general_surgery & 1.083956 & 0.698468 & 1.682197 & 0.719198 & 2492 & 862 & categorical & NaN \\
+37 & age_at_admission & age_at_admission & NaN & NaN & 1.005755 & 1.000450 & 1.011088 & 0.033443 & 2589 & 893 & continuous & NaN \\
+38 & crp & crp & NaN & NaN & 1.000835 & 0.999940 & 1.001731 & 0.067456 & 1841 & 709 & continuous & NaN \\
+39 & days_from_admission_to_first_culture & days_from_admission_to_first_culture & NaN & NaN & 1.004089 & 1.000278 & 1.007914 & 0.035446 & 2589 & 893 & continuous & NaN \\
+40 & imd_decile & imd_decile & NaN & NaN & 0.995830 & 0.962132 & 1.030709 & 0.811971 & 2441 & 853 & continuous & NaN \\
+41 & min_days_from_surgery_to_infection & min_days_from_surgery_to_infection & NaN & NaN & 1.001632 & 0.997500 & 1.005780 & 0.439457 & 2589 & 893 & continuous & NaN \\
+42 & surgery_length & surgery_length & NaN & NaN & 1.031671 & 1.006188 & 1.057800 & 0.014552 & 2589 & 893 & continuous & NaN \\
+43 & temp & temp & NaN & NaN & 1.155225 & 0.965241 & 1.382603 & 0.115477 & 2146 & 785 & continuous & NaN \\
+\bottomrule
+\end{tabular}
