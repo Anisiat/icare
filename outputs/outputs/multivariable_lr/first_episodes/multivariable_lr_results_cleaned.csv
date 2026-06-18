@@ -1,0 +1,34 @@
+Variable,Subcategory,Reference category,Odds ratio (95% CI),P-value,n,events
+Age at admission,Per unit increase,Per unit increase,1.01 (1.00–1.01),0.121,1849,660
+Male sex,Yes,No,1.06 (0.83–1.37),0.629,1849,660
+Hospital exposure within 90 days,Yes,No,0.91 (0.71–1.16),0.434,1849,660
+Prior antibiotic exposure,Yes,No,0.96 (0.66–1.40),0.848,1849,660
+Prior ESBL-positive culture,Yes,No,5.17 (3.33–8.01),<0.001,1849,660
+Surgery duration,Per unit increase,Per unit increase,1.02 (0.98–1.06),0.396,1849,660
+Temperature,Per unit increase,Per unit increase,1.28 (1.02–1.60),0.034,1849,660
+Type 2 diabetes,Yes,No,1.13 (0.86–1.49),0.375,1849,660
+Ethnicity,Asian,White,2.12 (1.57–2.85),<0.001,1849,660
+Ethnicity,Black,White,1.19 (0.81–1.74),0.372,1849,660
+Organism,K. oxytoca,E. coli,0.21 (0.10–0.45),<0.001,1849,660
+Organism,K. pneumoniae,E. coli,1.24 (0.96–1.60),0.107,1849,660
+Organism,P. mirabilis,E. coli,0.07 (0.02–0.19),<0.001,1849,660
+Sample site,Drain,Blood,1.06 (0.72–1.56),0.760,1849,660
+Sample site,Sputum,Blood,0.37 (0.24–0.59),<0.001,1849,660
+Sample site,Tips/devices,Blood,1.06 (0.53–2.13),0.859,1849,660
+Sample site,Tissue/biopsy,Blood,1.17 (0.47–2.88),0.737,1849,660
+Sample site,Urine,Blood,1.30 (0.95–1.76),0.097,1849,660
+Sample site,Wound,Blood,0.70 (0.50–0.97),0.031,1849,660
+Surgical specialty,Abdominal gastrointestinal surgery,General surgery,1.31 (0.87–1.95),0.192,1849,660
+Surgical specialty,Cardiothoracic surgery,General surgery,0.78 (0.47–1.31),0.354,1849,660
+Surgical specialty,Gynaecological oncology,General surgery,2.12 (1.30–3.43),0.002,1849,660
+Surgical specialty,Neurology/ENT,General surgery,0.79 (0.48–1.28),0.336,1849,660
+Surgical specialty,Obstetrics/Gynaecology,General surgery,0.63 (0.38–1.06),0.082,1849,660
+Surgical specialty,Orthopaedics/Plastics,General surgery,0.85 (0.50–1.43),0.542,1849,660
+Surgical specialty,Urology/Nephrology,General surgery,1.39 (0.90–2.16),0.135,1849,660
+Surgical specialty,Vascular surgery,General surgery,1.32 (0.75–2.33),0.332,1849,660
+Prophylaxis regimen,Aminoglycoside-based,Cefuroxime ± metronidazole,0.51 (0.33–0.79),0.003,1849,660
+Prophylaxis regimen,Cefuroxime ± metronidazole + aminoglycoside,Cefuroxime ± metronidazole,0.90 (0.51–1.59),0.709,1849,660
+Prophylaxis regimen,Co-amoxiclav-based,Cefuroxime ± metronidazole,0.63 (0.41–0.97),0.034,1849,660
+Prophylaxis regimen,Limited Enterobacterales activity,Cefuroxime ± metronidazole,0.47 (0.33–0.68),<0.001,1849,660
+Prophylaxis regimen,No prophylaxis,Cefuroxime ± metronidazole,1.03 (0.78–1.36),0.817,1849,660
+Prophylaxis regimen,Other broad-spectrum Gram-negative active,Cefuroxime ± metronidazole,1.69 (0.52–5.50),0.380,1849,660

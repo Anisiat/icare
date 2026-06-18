@@ -1,0 +1,2 @@
+strat_col,strat_value,n,events,non_events,status,error_type,error_message
+site,tissue/biopsy,61,19,42,failed,LinAlgError,Singular matrix

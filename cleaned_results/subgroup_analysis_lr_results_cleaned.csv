@@ -1,0 +1,212 @@
+Subgroup variable,Subgroup,Variable,Comparison,Odds ratio (95% CI),P-value,n,events,epv
+Surgical specialty,Abdominal gastrointestinal surgery,Male sex,Yes vs No,1.06 (0.62–1.79),0.837,419,177,10.4
+,,Hospital exposure within 90 days,Yes vs No,0.90 (0.54–1.50),0.696,419,177,10.4
+,,Prior antibiotic exposure,Yes vs No,0.75 (0.39–1.46),0.404,419,177,10.4
+,,Prior ESBL-positive culture,Yes vs No,4.94 (2.16–11.28),<0.001,419,177,10.4
+,,Surgery duration,Per unit increase,0.98 (0.91–1.05),0.536,419,177,10.4
+,,Ethnicity,Asian vs reference,1.70 (0.89–3.23),0.105,419,177,10.4
+,,,Black vs reference,1.21 (0.51–2.89),0.660,419,177,10.4
+,,Organism,K. pneumoniae vs reference,1.05 (0.62–1.77),0.848,419,177,10.4
+,,Prophylaxis regimen,Aminoglycoside-based vs reference,1.03 (0.37–2.89),0.957,419,177,10.4
+,,,Limited Enterobacterales activity vs reference,0.54 (0.22–1.35),0.190,419,177,10.4
+,,,No prophylaxis vs reference,0.84 (0.48–1.49),0.560,419,177,10.4
+,,Sample site,Drain vs reference,0.94 (0.53–1.67),0.834,419,177,10.4
+,,,Sputum vs reference,0.42 (0.17–1.04),0.061,419,177,10.4
+,,,Tips/devices vs reference,0.85 (0.24–2.98),0.800,419,177,10.4
+,,,Urine vs reference,0.99 (0.49–2.01),0.972,419,177,10.4
+,,,Wound vs reference,0.64 (0.35–1.17),0.146,419,177,10.4
+,Cardiothoracic surgery,Male sex,Yes vs No,0.67 (0.24–1.82),0.430,220,53,4.1
+,,Hospital exposure within 90 days,Yes vs No,0.55 (0.22–1.39),0.206,220,53,4.1
+,,Prior antibiotic exposure,Yes vs No,1.50 (0.34–6.57),0.590,220,53,4.1
+,,Prior ESBL-positive culture,Yes vs No,2.92 (0.71–12.01),0.137,220,53,4.1
+,,Surgery duration,Per unit increase,1.19 (0.95–1.48),0.126,220,53,4.1
+,,Ethnicity,Asian vs reference,5.09 (2.16–11.99),<0.001,220,53,4.1
+,,Organism,K. pneumoniae vs reference,0.45 (0.19–1.11),0.083,220,53,4.1
+,,Prophylaxis regimen,Limited Enterobacterales activity vs reference,0.79 (0.28–2.20),0.650,220,53,4.1
+,,,No prophylaxis vs reference,1.39 (0.54–3.58),0.492,220,53,4.1
+,,Sample site,Sputum vs reference,0.44 (0.16–1.17),0.098,220,53,4.1
+,,,Urine vs reference,3.72 (1.25–11.11),0.018,220,53,4.1
+,,,Wound vs reference,0.55 (0.17–1.75),0.309,220,53,4.1
+,General surgery,Male sex,Yes vs No,1.84 (0.88–3.85),0.106,219,74,5.3
+,,Hospital exposure within 90 days,Yes vs No,1.40 (0.67–2.91),0.365,219,74,5.3
+,,Prior antibiotic exposure,Yes vs No,1.26 (0.37–4.27),0.706,219,74,5.3
+,,Prior ESBL-positive culture,Yes vs No,1.52 (0.36–6.46),0.574,219,74,5.3
+,,Surgery duration,Per unit increase,1.06 (0.95–1.18),0.271,219,74,5.3
+,,Ethnicity,Asian vs reference,2.45 (0.73–8.19),0.146,219,74,5.3
+,,,Black vs reference,1.74 (0.47–6.44),0.407,219,74,5.3
+,,Organism,K. pneumoniae vs reference,1.39 (0.61–3.16),0.434,219,74,5.3
+,,Prophylaxis regimen,Co-amoxiclav-based vs reference,1.71 (0.52–5.66),0.379,219,74,5.3
+,,,No prophylaxis vs reference,2.31 (0.94–5.68),0.068,219,74,5.3
+,,Sample site,Drain vs reference,0.98 (0.38–2.51),0.959,219,74,5.3
+,,,Urine vs reference,1.58 (0.61–4.07),0.344,219,74,5.3
+,,,Wound vs reference,0.75 (0.33–1.67),0.481,219,74,5.3
+,Gynaecological oncology,Hospital exposure within 90 days,Yes vs No,0.66 (0.30–1.43),0.290,225,115,8.2
+,,Prior antibiotic exposure,Yes vs No,1.10 (0.40–2.99),0.852,225,115,8.2
+,,Prior ESBL-positive culture,Yes vs No,1.93 (0.44–8.47),0.385,225,115,8.2
+,,Surgery duration,Per unit increase,1.14 (0.89–1.45),0.294,225,115,8.2
+,,Ethnicity,Asian vs reference,3.40 (1.44–8.02),0.005,225,115,8.2
+,,,Black vs reference,1.08 (0.28–4.13),0.909,225,115,8.2
+,,Organism,K. pneumoniae vs reference,1.21 (0.52–2.83),0.663,225,115,8.2
+,,Prophylaxis regimen,Aminoglycoside-based vs reference,0.16 (0.04–0.63),0.008,225,115,8.2
+,,,Limited Enterobacterales activity vs reference,0.21 (0.08–0.58),0.003,225,115,8.2
+,,,No prophylaxis vs reference,1.37 (0.61–3.09),0.448,225,115,8.2
+,,Sample site,Drain vs reference,1.99 (0.77–5.12),0.156,225,115,8.2
+,,,Urine vs reference,2.11 (0.82–5.43),0.120,225,115,8.2
+,,,Wound vs reference,1.31 (0.57–3.00),0.526,225,115,8.2
+,Neurology/ENT,Male sex,Yes vs No,1.89 (0.92–3.91),0.085,250,69,5.3
+,,Hospital exposure within 90 days,Yes vs No,0.58 (0.28–1.19),0.138,250,69,5.3
+,,Prior antibiotic exposure,Yes vs No,1.06 (0.26–4.27),0.935,250,69,5.3
+,,Prior ESBL-positive culture,Yes vs No,5.74 (1.32–24.90),0.020,250,69,5.3
+,,Surgery duration,Per unit increase,0.94 (0.84–1.06),0.303,250,69,5.3
+,,Ethnicity,Asian vs reference,1.15 (0.43–3.03),0.782,250,69,5.3
+,,Organism,K. pneumoniae vs reference,3.48 (1.46–8.29),0.005,250,69,5.3
+,,Prophylaxis regimen,Co-amoxiclav-based vs reference,3.25 (1.26–8.36),0.015,250,69,5.3
+,,,No prophylaxis vs reference,1.57 (0.71–3.50),0.268,250,69,5.3
+,,Sample site,Sputum vs reference,0.42 (0.16–1.13),0.085,250,69,5.3
+,,,Urine vs reference,1.76 (0.69–4.49),0.235,250,69,5.3
+,,,Wound vs reference,0.24 (0.06–0.97),0.045,250,69,5.3
+,Obstetrics/Gynaecology,Hospital exposure within 90 days,Yes vs No,0.88 (0.44–1.80),0.735,318,66,5.5
+,,Prior antibiotic exposure,Yes vs No,0.07 (0.00–1.20),0.067,318,66,5.5
+,,Prior ESBL-positive culture,Yes vs No,6.99 (1.84–26.59),0.004,318,66,5.5
+,,Surgery duration,Per unit increase,1.81 (1.36–2.41),<0.001,318,66,5.5
+,,Ethnicity,Asian vs reference,1.77 (0.73–4.33),0.209,318,66,5.5
+,,,Black vs reference,3.17 (1.29–7.81),0.012,318,66,5.5
+,,Organism,K. pneumoniae vs reference,1.76 (0.67–4.58),0.249,318,66,5.5
+,,Prophylaxis regimen,Co-amoxiclav-based vs reference,0.21 (0.07–0.59),0.003,318,66,5.5
+,,,No prophylaxis vs reference,0.56 (0.25–1.26),0.159,318,66,5.5
+,,Sample site,Urine vs reference,1.90 (0.97–3.70),0.060,318,66,5.5
+,,,Wound vs reference,0.52 (0.17–1.56),0.243,318,66,5.5
+,Orthopaedics/Plastics,Male sex,Yes vs No,1.01 (0.41–2.48),0.981,245,59,4.2
+,,Hospital exposure within 90 days,Yes vs No,1.41 (0.44–4.47),0.562,245,59,4.2
+,,Prior antibiotic exposure,Yes vs No,0.78 (0.19–3.20),0.727,245,59,4.2
+,,Prior ESBL-positive culture,Yes vs No,38.75 (8.22–182.77),<0.001,245,59,4.2
+,,Surgery duration,Per unit increase,1.06 (0.93–1.21),0.380,245,59,4.2
+,,Ethnicity,Asian vs reference,4.00 (1.14–14.03),0.031,245,59,4.2
+,,,Black vs reference,0.45 (0.13–1.63),0.224,245,59,4.2
+,,Organism,K. pneumoniae vs reference,1.70 (0.63–4.58),0.294,245,59,4.2
+,,Prophylaxis regimen,Co-amoxiclav-based vs reference,0.38 (0.11–1.36),0.137,245,59,4.2
+,,,No prophylaxis vs reference,1.02 (0.39–2.65),0.970,245,59,4.2
+,,Sample site,Tissue/Biopsy vs reference,0.60 (0.16–2.24),0.448,245,59,4.2
+,,,Urine vs reference,1.04 (0.35–3.09),0.939,245,59,4.2
+,,,Wound vs reference,0.19 (0.06–0.58),0.004,245,59,4.2
+,Urology/Nephrology,Male sex,Yes vs No,1.30 (0.80–2.12),0.295,450,197,10.9
+,,Hospital exposure within 90 days,Yes vs No,1.67 (0.97–2.89),0.066,450,197,10.9
+,,Prior antibiotic exposure,Yes vs No,0.72 (0.36–1.46),0.369,450,197,10.9
+,,Prior ESBL-positive culture,Yes vs No,3.70 (1.96–6.97),<0.001,450,197,10.9
+,,Surgery duration,Per unit increase,1.22 (1.09–1.37),<0.001,450,197,10.9
+,,Ethnicity,Asian vs reference,2.29 (1.23–4.27),0.009,450,197,10.9
+,,,Black vs reference,0.90 (0.46–1.77),0.759,450,197,10.9
+,,Organism,K. pneumoniae vs reference,2.98 (1.68–5.31),<0.001,450,197,10.9
+,,Prophylaxis regimen,Aminoglycoside-based vs reference,1.10 (0.41–2.92),0.851,450,197,10.9
+,,,Cefuroxime ± metronidazole + aminoglycoside vs reference,0.93 (0.31–2.84),0.900,450,197,10.9
+,,,Co-amoxiclav-based vs reference,0.56 (0.20–1.57),0.273,450,197,10.9
+,,,Limited Enterobacterales activity vs reference,0.64 (0.23–1.73),0.375,450,197,10.9
+,,,No prophylaxis vs reference,1.51 (0.61–3.75),0.374,450,197,10.9
+,,Sample site,Drain vs reference,1.95 (0.50–7.59),0.333,450,197,10.9
+,,,Sputum vs reference,1.07 (0.27–4.27),0.922,450,197,10.9
+,,,Urine vs reference,2.22 (1.22–4.03),0.009,450,197,10.9
+,,,Wound vs reference,0.73 (0.33–1.64),0.453,450,197,10.9
+,Vascular surgery,Male sex,Yes vs No,2.36 (0.89–6.26),0.084,146,52,4.3
+,,Hospital exposure within 90 days,Yes vs No,0.74 (0.31–1.76),0.495,146,52,4.3
+,,Prior antibiotic exposure,Yes vs No,2.72 (0.56–13.11),0.213,146,52,4.3
+,,Prior ESBL-positive culture,Yes vs No,1.82 (0.44–7.52),0.411,146,52,4.3
+,,Surgery duration,Per unit increase,1.11 (0.91–1.36),0.316,146,52,4.3
+,,Organism,K. pneumoniae vs reference,5.50 (2.18–13.89),<0.001,146,52,4.3
+,,Prophylaxis regimen,Aminoglycoside-based vs reference,0.27 (0.07–1.03),0.055,146,52,4.3
+,,,Limited Enterobacterales activity vs reference,0.76 (0.14–4.09),0.745,146,52,4.3
+,,,No prophylaxis vs reference,0.33 (0.09–1.25),0.101,146,52,4.3
+,,Sample site,Urine vs reference,1.36 (0.42–4.41),0.613,146,52,4.3
+,,,Wound vs reference,0.69 (0.26–1.88),0.472,146,52,4.3
+Sample site,Blood,Male sex,Yes vs No,1.34 (0.59–3.05),0.482,158,57,4.4
+,,Hospital exposure within 90 days,Yes vs No,0.76 (0.30–1.90),0.556,158,57,4.4
+,,Prior antibiotic exposure,Yes vs No,1.95 (0.61–6.30),0.262,158,57,4.4
+,,Prior ESBL-positive culture,Yes vs No,7.90 (1.65–37.87),0.010,158,57,4.4
+,,Surgery duration,Per unit increase,1.04 (0.92–1.18),0.532,158,57,4.4
+,,Ethnicity,Asian vs reference,2.15 (0.70–6.56),0.179,158,57,4.4
+,,,Black vs reference,1.51 (0.50–4.58),0.469,158,57,4.4
+,,Organism,K. pneumoniae vs reference,1.05 (0.42–2.62),0.921,158,57,4.4
+,,Prophylaxis regimen,Limited Enterobacterales activity vs reference,0.87 (0.21–3.59),0.847,158,57,4.4
+,,,No prophylaxis vs reference,0.64 (0.28–1.47),0.293,158,57,4.4
+,,Surgical specialty,Abdominal gastrointestinal surgery vs reference,1.42 (0.52–3.87),0.491,158,57,4.4
+,,,Urology/Nephrology vs reference,0.80 (0.31–2.10),0.653,158,57,4.4
+,Drain,Male sex,Yes vs No,1.84 (0.93–3.63),0.079,272,109,7.3
+,,Hospital exposure within 90 days,Yes vs No,0.80 (0.42–1.52),0.491,272,109,7.3
+,,Prior antibiotic exposure,Yes vs No,0.76 (0.33–1.78),0.530,272,109,7.3
+,,Prior ESBL-positive culture,Yes vs No,2.76 (1.01–7.56),0.048,272,109,7.3
+,,Surgery duration,Per unit increase,1.08 (0.97–1.19),0.160,272,109,7.3
+,,Ethnicity,Asian vs reference,1.36 (0.61–3.00),0.453,272,109,7.3
+,,,Black vs reference,0.84 (0.23–3.05),0.795,272,109,7.3
+,,Organism,K. pneumoniae vs reference,0.81 (0.43–1.53),0.514,272,109,7.3
+,,Prophylaxis regimen,Aminoglycoside-based vs reference,0.57 (0.19–1.70),0.317,272,109,7.3
+,,,Limited Enterobacterales activity vs reference,0.37 (0.13–1.06),0.065,272,109,7.3
+,,,No prophylaxis vs reference,0.55 (0.27–1.14),0.107,272,109,7.3
+,,Surgical specialty,Abdominal gastrointestinal surgery vs reference,2.38 (1.14–4.97),0.021,272,109,7.3
+,,,Gynaecological oncology vs reference,2.71 (1.10–6.66),0.030,272,109,7.3
+,,,Urology/Nephrology vs reference,5.28 (1.26–22.17),0.023,272,109,7.3
+,Sputum,Male sex,Yes vs No,1.45 (0.54–3.89),0.459,303,60,4.0
+,,Hospital exposure within 90 days,Yes vs No,0.47 (0.20–1.09),0.079,303,60,4.0
+,,Prior antibiotic exposure,Yes vs No,2.27 (0.62–8.26),0.215,303,60,4.0
+,,Prior ESBL-positive culture,Yes vs No,9.37 (2.84–30.85),<0.001,303,60,4.0
+,,Surgery duration,Per unit increase,0.98 (0.85–1.12),0.743,303,60,4.0
+,,Ethnicity,Asian vs reference,10.25 (3.73–28.15),<0.001,303,60,4.0
+,,Organism,K. pneumoniae vs reference,1.63 (0.79–3.35),0.186,303,60,4.0
+,,Prophylaxis regimen,Co-amoxiclav-based vs reference,2.42 (0.51–11.54),0.267,303,60,4.0
+,,,Limited Enterobacterales activity vs reference,0.36 (0.08–1.67),0.194,303,60,4.0
+,,,No prophylaxis vs reference,1.13 (0.51–2.52),0.764,303,60,4.0
+,,Surgical specialty,Abdominal gastrointestinal surgery vs reference,2.29 (0.67–7.83),0.186,303,60,4.0
+,,,Cardiothoracic surgery vs reference,0.90 (0.32–2.59),0.850,303,60,4.0
+,,,Neurology/ENT vs reference,0.92 (0.32–2.67),0.880,303,60,4.0
+,,,Urology/Nephrology vs reference,2.52 (0.52–12.21),0.253,303,60,4.0
+,Tips/devices,Male sex,Yes vs No,0.93 (0.22–3.82),0.915,59,21,1.9
+,,Hospital exposure within 90 days,Yes vs No,0.41 (0.08–2.02),0.271,59,21,1.9
+,,Prior antibiotic exposure,Yes vs No,1.56 (0.20–12.51),0.674,59,21,1.9
+,,Prior ESBL-positive culture,Yes vs No,4.77 (0.31–72.67),0.261,59,21,1.9
+,,Surgery duration,Per unit increase,0.96 (0.79–1.17),0.696,59,21,1.9
+,,Ethnicity,Asian vs reference,1.44 (0.28–7.53),0.665,59,21,1.9
+,,Organism,K. pneumoniae vs reference,1.52 (0.42–5.41),0.522,59,21,1.9
+,,Prophylaxis regimen,Limited Enterobacterales activity vs reference,0.61 (0.12–2.97),0.537,59,21,1.9
+,,,No prophylaxis vs reference,2.15 (0.44–10.53),0.347,59,21,1.9
+,,Surgical specialty,Abdominal gastrointestinal surgery vs reference,1.66 (0.32–8.63),0.547,59,21,1.9
+,Urine,Male sex,Yes vs No,1.41 (0.93–2.13),0.104,747,329,15.0
+,,Hospital exposure within 90 days,Yes vs No,1.28 (0.87–1.90),0.215,747,329,15.0
+,,Prior antibiotic exposure,Yes vs No,1.11 (0.62–2.00),0.726,747,329,15.0
+,,Prior ESBL-positive culture,Yes vs No,3.23 (1.88–5.56),<0.001,747,329,15.0
+,,Surgery duration,Per unit increase,1.07 (1.00–1.16),0.067,747,329,15.0
+,,Ethnicity,Asian vs reference,1.77 (1.12–2.80),0.014,747,329,15.0
+,,,Black vs reference,0.86 (0.49–1.51),0.608,747,329,15.0
+,,Organism,K. pneumoniae vs reference,9.86 (4.99–19.51),<0.001,747,329,15.0
+,,Prophylaxis regimen,Aminoglycoside-based vs reference,0.58 (0.30–1.14),0.115,747,329,15.0
+,,,Cefuroxime ± metronidazole + aminoglycoside vs reference,1.15 (0.50–2.62),0.743,747,329,15.0
+,,,Co-amoxiclav-based vs reference,0.62 (0.33–1.16),0.134,747,329,15.0
+,,,Limited Enterobacterales activity vs reference,0.71 (0.40–1.26),0.243,747,329,15.0
+,,,No prophylaxis vs reference,1.37 (0.86–2.16),0.181,747,329,15.0
+,,Surgical specialty,Abdominal gastrointestinal surgery vs reference,1.06 (0.47–2.41),0.887,747,329,15.0
+,,,Cardiothoracic surgery vs reference,1.45 (0.55–3.81),0.453,747,329,15.0
+,,,Gynaecological oncology vs reference,1.77 (0.75–4.18),0.194,747,329,15.0
+,,,Neurology/ENT vs reference,0.86 (0.40–1.83),0.692,747,329,15.0
+,,,Obstetrics/Gynaecology vs reference,0.67 (0.31–1.43),0.301,747,329,15.0
+,,,Orthopaedics/Plastics vs reference,1.18 (0.53–2.59),0.687,747,329,15.0
+,,,Urology/Nephrology vs reference,1.42 (0.74–2.72),0.294,747,329,15.0
+,,,Vascular surgery vs reference,0.92 (0.26–3.21),0.895,747,329,15.0
+,Wound,Male sex,Yes vs No,1.18 (0.72–1.94),0.505,590,167,7.3
+,,Hospital exposure within 90 days,Yes vs No,1.32 (0.82–2.13),0.252,590,167,7.3
+,,Prior antibiotic exposure,Yes vs No,0.82 (0.42–1.61),0.571,590,167,7.3
+,,Prior ESBL-positive culture,Yes vs No,5.28 (2.37–11.78),<0.001,590,167,7.3
+,,Surgery duration,Per unit increase,1.04 (0.96–1.12),0.358,590,167,7.3
+,,Ethnicity,Asian vs reference,2.34 (1.23–4.44),0.010,590,167,7.3
+,,,Black vs reference,0.90 (0.47–1.75),0.760,590,167,7.3
+,,Organism,K. pneumoniae vs reference,0.98 (0.61–1.58),0.938,590,167,7.3
+,,Prophylaxis regimen,Aminoglycoside-based vs reference,0.53 (0.21–1.32),0.173,590,167,7.3
+,,,Cefuroxime ± metronidazole + aminoglycoside vs reference,1.82 (0.50–6.64),0.365,590,167,7.3
+,,,Co-amoxiclav-based vs reference,0.82 (0.32–2.09),0.682,590,167,7.3
+,,,Limited Enterobacterales activity vs reference,0.39 (0.19–0.81),0.012,590,167,7.3
+,,,No prophylaxis vs reference,0.91 (0.51–1.63),0.760,590,167,7.3
+,,,Other broad-spectrum Gram-negative active vs reference,2.41 (0.61–9.54),0.209,590,167,7.3
+,,Surgical specialty,Abdominal gastrointestinal surgery vs reference,1.41 (0.66–3.02),0.379,590,167,7.3
+,,,Cardiothoracic surgery vs reference,0.63 (0.24–1.69),0.361,590,167,7.3
+,,,Gynaecological oncology vs reference,2.73 (1.18–6.30),0.019,590,167,7.3
+,,,Neurology/ENT vs reference,0.29 (0.09–0.98),0.047,590,167,7.3
+,,,Obstetrics/Gynaecology vs reference,0.77 (0.26–2.29),0.639,590,167,7.3
+,,,Orthopaedics/Plastics vs reference,0.34 (0.14–0.81),0.015,590,167,7.3
+,,,Urology/Nephrology vs reference,1.31 (0.55–3.09),0.542,590,167,7.3
+,,,Vascular surgery vs reference,1.64 (0.62–4.34),0.319,590,167,7.3

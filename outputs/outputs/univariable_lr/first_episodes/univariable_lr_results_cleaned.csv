@@ -1,0 +1,45 @@
+Variable,Comparison,Odds ratio (95% CI),P-value
+Age at admission,Per unit increase,1.01 (1.00–1.01),0.027
+Male sex,Yes vs No,1.01 (0.85–1.21),0.899
+Ethnicity,Asian vs White,2.74 (2.12–3.55),<0.001
+,Black vs White,1.33 (0.96–1.84),0.081
+Index of Multiple Deprivation decile,Per unit increase,0.98 (0.95–1.02),0.335
+Asthma,Yes vs No,1.11 (0.89–1.37),0.362
+Cancer,Yes vs No,0.96 (0.78–1.19),0.702
+COPD,Yes vs No,0.76 (0.57–1.01),0.062
+Hypertension,Yes vs No,1.28 (1.08–1.53),0.005
+Ischaemic heart disease,Yes vs No,1.11 (0.91–1.35),0.300
+Type 2 diabetes,Yes vs No,1.43 (1.15–1.79),0.002
+Emergency exposure within 90 days,Yes vs No,1.02 (0.79–1.31),0.897
+Hospital exposure within 90 days,Yes vs No,1.16 (0.97–1.38),0.106
+Any healthcare exposure within 90 days,Yes vs No,1.10 (0.93–1.32),0.272
+Prior antibiotic exposure,Yes vs No,1.26 (0.97–1.64),0.081
+Prior ESBL-positive culture,Yes vs No,4.59 (3.32–6.34),<0.001
+Surgery duration,Per unit increase,1.03 (1.00–1.06),0.057
+Days from surgery to infection,Per unit increase,0.99 (0.98–0.99),0.001
+Prophylaxis regimen,Aminoglycoside-Based vs Cefuroxime ± Metronidazole,0.64 (0.46–0.90),0.010
+,Cefuroxime +/- Metronidazole + Aminoglycoside vs Cefuroxime ± Metronidazole,1.10 (0.66–1.83),0.705
+,Co-Amoxiclav-Based vs Cefuroxime ± Metronidazole,0.51 (0.37–0.72),<0.001
+,Limited Enterobacterales Activity vs Cefuroxime ± Metronidazole,0.59 (0.43–0.80),<0.001
+,No Prophylaxis vs Cefuroxime ± Metronidazole,0.83 (0.67–1.03),0.085
+,Other Broad-Spectrum Gram-Negative Active vs Cefuroxime ± Metronidazole,1.42 (0.57–3.54),0.454
+Infection site,Drain vs Blood,1.36 (0.88–2.11),0.167
+,Sputum vs Blood,0.45 (0.28–0.72),<0.001
+,Tips Devices vs Blood,1.16 (0.60–2.27),0.659
+,Tissue/Biopsy vs Blood,1.15 (0.57–2.30),0.698
+,Urine vs Blood,1.41 (0.96–2.07),0.080
+,Wound vs Blood,0.76 (0.51–1.14),0.181
+Organism,K. Oxytoca vs E. Coli,0.15 (0.07–0.30),<0.001
+,K. Pneumoniae vs E. Coli,1.16 (0.94–1.43),0.173
+,P. Mirabilis vs E. Coli,0.07 (0.03–0.17),<0.001
+Temperature,Per unit increase,1.23 (1.01–1.50),0.043
+CRP,Per unit increase,1.00 (1.00–1.00),0.037
+Days From Admission To First Culture,Per unit increase,1.00 (0.99–1.00),0.313
+TFC,Abdominal Gi vs General Surgery,1.40 (0.96–2.03),0.078
+,Cardiothoracic vs General Surgery,0.58 (0.37–0.92),0.021
+,Gynaecological Oncology vs General Surgery,1.96 (1.30–2.97),0.001
+,Neuro Ent vs General Surgery,0.77 (0.50–1.20),0.249
+,Obs Gynae vs General Surgery,0.54 (0.36–0.81),0.003
+,Ortho Plastics vs General Surgery,0.65 (0.42–1.00),0.053
+,Uro Nephro vs General Surgery,1.41 (0.98–2.03),0.064
+,Vascular vs General Surgery,1.00 (0.62–1.62),0.987

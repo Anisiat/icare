@@ -1,0 +1,34 @@
+Variable,Comparison,Odds ratio (95% CI),P-value
+Age at admission,Yes vs No,1.01 (1.00–1.02),0.095
+Male sex,Yes vs No,1.20 (0.92–1.57),0.168
+Ethnicity,Yes vs No,2.00 (1.47–2.71),<0.001
+,Yes vs No,1.08 (0.74–1.59),0.678
+Type 2 diabetes,Yes vs No,1.09 (0.83–1.44),0.519
+Hospital exposure within 90 days,Yes vs No,0.89 (0.70–1.13),0.346
+Prior antibiotic exposure,Yes vs No,1.04 (0.72–1.50),0.833
+Prior ESBL-positive culture,Yes vs No,5.49 (3.53–8.54),<0.001
+Surgical specialty,Yes vs No,1.40 (0.90–2.17),0.135
+,Yes vs No,0.86 (0.51–1.47),0.587
+,Yes vs No,2.24 (1.36–3.66),0.001
+,Yes vs No,0.79 (0.47–1.32),0.364
+,Yes vs No,0.58 (0.34–1.00),0.050
+,Yes vs No,0.80 (0.47–1.36),0.413
+,Yes vs No,1.42 (0.90–2.25),0.130
+,Yes vs No,1.49 (0.84–2.64),0.172
+Surgery duration,Yes vs No,1.03 (0.99–1.08),0.135
+Prophylaxis regimen,Yes vs No,0.53 (0.35–0.81),0.003
+,Yes vs No,0.91 (0.52–1.61),0.754
+,Yes vs No,0.65 (0.41–1.03),0.066
+,Yes vs No,0.49 (0.33–0.72),<0.001
+,Yes vs No,1.08 (0.81–1.44),0.600
+,Yes vs No,1.30 (0.46–3.67),0.616
+Sample site,Yes vs No,0.90 (0.62–1.31),0.590
+,Yes vs No,0.43 (0.29–0.65),<0.001
+,Yes vs No,0.83 (0.42–1.63),0.586
+,Yes vs No,1.08 (0.47–2.47),0.864
+,Yes vs No,1.36 (1.02–1.82),0.037
+,Yes vs No,0.64 (0.47–0.88),0.005
+Organism,Yes vs No,0.19 (0.09–0.38),<0.001
+,Yes vs No,1.32 (1.02–1.70),0.034
+,Yes vs No,0.08 (0.04–0.17),<0.001
+Temperature,Yes vs No,1.27 (1.02–1.59),0.033

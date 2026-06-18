@@ -2,7 +2,6 @@
 .ipynb_checkpoints/
 
 *.png
-*.csv
 *.xlsx
 *.sh
 *.zip
